@@ -281,6 +281,13 @@ TEST(NodeTest, DefaultNodeStyle) {
   EXPECT_EQ(EmitterStyle::Default, node.Style());
 }
 
+TEST(NodeTest, MapElementRemoval) {
+    Node node;
+    node["foo"] = "bar";
+    node.remove("foo");
+    EXPECT_TRUE(!node["foo"]);
+}
+
 TEST(NodeTest, AccessNonexistentKeyOnConstNode) {
   YAML::Node node;
   node["3"] = "4";
